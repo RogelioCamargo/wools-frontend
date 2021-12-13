@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { Row, Col } from "react-bootstrap";
+
+// components
+import LeftNavigationBar from "./components/LeftNavigationBar";
+
+// pages
+import Dashboard from "./pages/Dashboard";
+import Inventory from "./pages/Inventory";
+import Supplies from "./pages/Supplies";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div style={{ height: "80px", backgroundColor: "blue" }}>
+      </div>
+      <div style={{ display: "flex" }}>
+        <Col xs={3}>
+          <LeftNavigationBar />
+        </Col>
+        <Col>
+          <Dashboard />
+          <Inventory />
+          <Supplies />
+        </Col>
+      </div>
     </div>
   );
 }
