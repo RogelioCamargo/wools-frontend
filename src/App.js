@@ -1,6 +1,5 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { Col } from "react-bootstrap";
 
 // components
 import LeftNavigationBar from "./components/LeftNavigationBar";
@@ -13,18 +12,18 @@ import Supplies from "./pages/Supplies";
 function App() {
   return (
     <div>
-      <div style={{ height: "80px", backgroundColor: "blue" }}></div>
-      <div style={{ display: "flex" }}>
-        <Col xs={3}>
+      <div className="bg-primary" style={{ height: "50px" }}></div>
+      <div className="d-flex">
+        <div className="col-3 bg-light">
           <LeftNavigationBar />
-        </Col>
-        <Col>
+        </div>
+        <div className="col-9">
           <Routes>
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/supplies" element={<Supplies />} />
             <Route path="/" element={<Dashboard />} />
           </Routes>
-        </Col>
+        </div>
       </div>
     </div>
   );

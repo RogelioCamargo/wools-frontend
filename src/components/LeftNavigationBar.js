@@ -3,12 +3,22 @@ import { Link } from "react-router-dom";
 
 const LeftNavigationBar = () => {
 	return (
-    <div className="container">
-      <Link to="/">Dashboard</Link>
-      <br />
-      <Link to="/inventory">Inventory</Link>
-      <br />
-      <Link to="/supplies">Supplies</Link>
+    <div className="w-50 mx-auto my-5">
+      <p className="h6 pb-2">
+        <Link className="text-dark" to="/">
+          Dashboard
+        </Link>
+      </p>
+      <p className="h6 pb-2">
+        <Link className="text-dark" to="/inventory">
+          Inventory
+        </Link>
+      </p>
+      <p className="h6">
+        <Link className="text-dark" to="/supplies">
+          Supplies
+        </Link>
+      </p>
     </div>
   );
 };

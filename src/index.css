@@ -1,0 +1,22 @@
+/* html {
+	font-size: 14px;
+} */
+
+.bg-muted {
+	background-color: #dfdfdf;
+}
+
+.bg-main {
+	background-color: #abe9cd;
+	background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+}
+
+.btn-main {
+	background-color: #abe9cd;
+	background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+}
+
+.text-9rem {
+	font-size: .9rem;
+}
+
