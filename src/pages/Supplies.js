@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useResource } from "../hooks";
 
 // components
-import Item from "../components/Item";
+import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
+import Header from "../components/Header";
 import { Form } from "react-bootstrap";
 
 const Supplies = () => {
@@ -17,21 +18,12 @@ const Supplies = () => {
     <div className="w-75 mx-auto my-5">
       <PageHeader
         title="Supplies"
-        addButton
         onClick={() => console.log("Supplies")}
+        addButton
       />
       <div>
-        <h2 className="h5 mb-2">Critical</h2>
-        <div>
-          {criticals.map((item) => (
-            <Item
-              key={item.id}
-              title={item.name}
-              level={item.level}
-              date={item.date}
-            />
-          ))}
-        </div>
+        <Header title="Critical" />
+        <ItemList items={criticals} />
       </div>
       <Form.Control
         className="my-3"
@@ -41,17 +33,8 @@ const Supplies = () => {
         onChange={(e) => setFilter(e.target.value)}
       />
       <div>
-        <h2 className="h5 mb-2">Other</h2>
-        <div>
-          {filtered.map((item) => (
-            <Item
-              key={item.id}
-              title={item.name}
-              level={item.level}
-              date={item.date}
-            />
-          ))}
-        </div>
+        <Header title="Other" />
+        <ItemList items={filtered} />
       </div>
     </div>
   );

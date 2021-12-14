@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useResource } from "../hooks";
 
-import Item from "../components/Item";
+import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
+import Header from "../components/Header";
+import { Form } from "react-bootstrap";
 
 const Inventory = () => {
   const [products] = useResource("http://localhost:3001/api/products");
+  const [filter, setFilter] = useState("");
 
+  const criticals = products.filter((item) => !item.level);
+  const filtered = products.filter((item) =>
+    item.name.toLowerCase().includes(filter.toLowerCase())
+  );
   return (
     <div className="w-75 mx-auto my-5">
       <PageHeader
@@ -15,17 +22,19 @@ const Inventory = () => {
         onClick={() => console.log("Inventory")}
       />
       <div>
-        <h2 className="h5">Critical</h2>
-        <div>
-          {products.map((item) => (
-            <Item
-              key={item.id}
-              title={item.name}
-              level={item.level}
-              date={item.date}
-            />
-          ))}
-        </div>
+        <Header title="Critical" />
+        <ItemList items={criticals} />
+      </div>
+      <Form.Control
+        className="my-3"
+        placeholder="Search"
+        type="text"
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+      />
+      <div>
+        <Header title="Other" />
+        <ItemList items={filtered} />
       </div>
     </div>
   );
