@@ -15,7 +15,18 @@ export const useResource = (url, query = "") => {
 		}
 
 		getResources();
-	}, [url, query])
+	}, [url, query]);
 
-	return [resources]; 
+	const create = async (resource) => {
+		try {
+			const response = await axios.post(url, resource);
+			setResources([...resources, response.data]);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const service = { create }
+
+	return [resources, service]; 
 }

@@ -5,11 +5,13 @@ import { useResource } from "../hooks";
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
 import Header from "../components/Header";
+import ModalForm from "../components/ModalForm";
 import { Form } from "react-bootstrap";
 
 const Inventory = () => {
-  const [products] = useResource("http://localhost:3001/api/products");
+  const [products, service] = useResource("http://localhost:3001/api/products");
   const [filter, setFilter] = useState("");
+  const [show, setShow] = useState(false);
 
   const criticals = products.filter((item) => !item.level);
   const filtered = products.filter((item) =>
@@ -17,11 +19,7 @@ const Inventory = () => {
   );
   return (
     <div className="w-75 mx-auto my-5">
-      <PageHeader
-        title="Inventory"
-        addButton
-        onClick={() => console.log("Inventory")}
-      />
+      <PageHeader title="Inventory" addButton onClick={() => setShow(true)} />
       <div>
         <Header title="Critical" />
         <ItemList items={criticals} />
@@ -37,6 +35,11 @@ const Inventory = () => {
         <Header title="Other" />
         <ItemList items={filtered} />
       </div>
+      <ModalForm
+        show={show}
+        handleClose={() => setShow(false)}
+        createResource={service.create}
+      />
     </div>
   );
 };
