@@ -28,7 +28,10 @@ const Dashboard = () => {
       <PageHeader title="Dashboard" />
       <div className="mb-4">
         <Header title="Announcments" />
-        <ItemList items={announcments} isMessage />
+        <ItemList
+          items={announcments.sort((a, b) => a.level - b.level)}
+          isMessage
+        />
         <Button variant="outline-primary" className="mt-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +48,10 @@ const Dashboard = () => {
       </div>
       <div className="mb-4">
         <Header title="Reminders" />
-        <ItemList items={reminders} isMessage />
+        <ItemList
+          items={reminders.sort((a, b) => a.level - b.level)}
+          isMessage
+        />
         <Button variant="outline-primary" className="mt-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +68,7 @@ const Dashboard = () => {
       </div>
       <div>
         <Header title="Tickets" />
-        <ItemList items={tickets} isMessage />
+        <ItemList items={tickets.sort((a, b) => a.level - b.level)} isMessage />
         <Button variant="outline-primary" className="mt-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

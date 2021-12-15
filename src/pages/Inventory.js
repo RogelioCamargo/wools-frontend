@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useResource } from "../hooks";
 
+// components
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
 import Header from "../components/Header";
