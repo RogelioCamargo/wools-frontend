@@ -26,7 +26,7 @@ const Inventory = () => {
       <PageHeader title="Inventory" addButton isProduct />
       <div>
         <Header title="Critical" />
-        <ItemList items={criticals} isCritialList />
+        <ItemList items={criticals} isCritialList isProduct />
       </div>
       <Form.Control
         className="my-3"
@@ -37,7 +37,7 @@ const Inventory = () => {
       />
       <div>
         <Header title="Other" />
-        <ItemList items={matches} />
+        <ItemList items={matches} isProduct/>
       </div>
     </div>
   );

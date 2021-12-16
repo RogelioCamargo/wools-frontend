@@ -52,7 +52,7 @@ export const updateOneProduct = (item) => {
   return async (dispatch) => {
     try {
       const updatedItem = await itemService.updateOne(
-        `${url}/${item.id}`,
+        url,
         item
       );
       dispatch({
@@ -68,7 +68,7 @@ export const updateOneProduct = (item) => {
 export const deleteOneProduct = (id) => {
   return async (dispatch) => {
     try {
-      await itemService.deleteOne(`${url}/${id}`, id);
+      await itemService.deleteOne(url, id);
       dispatch({
         type: "DELETE_PRODUCT",
         payload: id,
