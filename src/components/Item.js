@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 // action creators
 import { deleteOneAnnouncement } from "../reducers/announcementReducer";
-import { deleteOneReminder } from "../reducers/announcementReducer";
+import { deleteOneReminder } from "../reducers/reminderReducer";
 import { deleteOneTicket } from "../reducers/ticketReducer";
 import { deleteOneProduct } from "../reducers/productReducer";
 import { deleteOneItem } from "../reducers/itemReducer";
@@ -43,10 +43,22 @@ const Item = ({ item, isMessage, isProduct }) => {
     </div>
   );
 
-  if (isMessage) 
+  if (isMessage) {
+    const typeAnnouncementDelete = () => dispatch(deleteOneAnnouncement(item.id));
+    const typeReminderDelete = () => dispatch(deleteOneReminder(item.id));
+    const typeTicketDelete = () => dispatch(deleteOneTicket(item.id));
     return (
-      <MessageDisplay onClickDelete={() => console.log("PRODUCT ", item.id)} />
+      <MessageDisplay
+        onClickDelete={
+          item.type === "reminder"
+            ? typeReminderDelete
+            : item.type === "ticket"
+            ? typeTicketDelete
+            : typeAnnouncementDelete
+        }
+      />
     );
+  }
 
   const ItemDisplay = ({ onClickUpdate, onClickDelete }) => (
     <div className="d-flex mb-2 justify-content-between">

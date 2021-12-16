@@ -52,7 +52,7 @@ export const updateOneReminder = (message) => {
   return async (dispatch) => {
     try {
       const updatedMessage = await itemService.updateOne(
-        `${url}/${message.id}`,
+        url,
         message
       );
       dispatch({
@@ -68,7 +68,7 @@ export const updateOneReminder = (message) => {
 export const deleteOneReminder = (id) => {
   return async (dispatch) => {
     try {
-      await itemService.deleteOne(`${url}/${id}`, id);
+      await itemService.deleteOne(url, id);
       dispatch({
         type: "DELETE_REMINDER",
         payload: id,
