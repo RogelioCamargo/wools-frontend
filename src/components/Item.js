@@ -6,7 +6,7 @@ import { updateOneAnnouncement, deleteOneAnnouncement } from "../reducers/announ
 import { updateOneReminder, deleteOneReminder } from "../reducers/reminderReducer";
 import { updateOneTicket, deleteOneTicket } from "../reducers/ticketReducer";
 import { updateOneProduct, deleteOneProduct } from "../reducers/productReducer";
-import { updateOneItem, deleteOneItem } from "../reducers/itemReducer";
+import { updateOneItem, deleteOneItem } from "../reducers/suppliesReducer";
 
 // components
 import ActionButton from "./ActionButton";

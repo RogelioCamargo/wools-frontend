@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createOneProduct } from "../reducers/productReducer";
-import { createOneItem } from "../reducers/itemReducer";
+import { createOneItem } from "../reducers/suppliesReducer";
 
 const ModalForm = ({ title, show, handleClose, isProduct }) => {
   const [item, setItem] = useState({

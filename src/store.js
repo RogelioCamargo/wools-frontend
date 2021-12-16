@@ -6,15 +6,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import announcementReducer from "./reducers/announcementReducer";
 import reminderReducer from "./reducers/announcementReducer";
 import ticketReducer from "./reducers/ticketReducer";
-import itemReducer from "./reducers/itemReducer";
+import suppliesReducer from "./reducers/suppliesReducer";
 import productReducer from "./reducers/productReducer";
+import fieldsReducer from "./reducers/fieldsReducer";
 
 const reducer = combineReducers({
-	announcements: announcementReducer,
-	reminders: reminderReducer,
-	tickets: ticketReducer,
-	supplies: itemReducer,
-	products: productReducer
+  announcements: announcementReducer,
+  reminders: reminderReducer,
+  tickets: ticketReducer,
+  supplies: suppliesReducer,
+  products: productReducer,
+  fields: fieldsReducer,
 });
 
 export default createStore(

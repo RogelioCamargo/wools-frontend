@@ -2,7 +2,7 @@ import itemService from "../services/itemService";
 
 const url = "http://localhost:3001/api/supplies";
 
-const itemReducer = (state = [], action) => {
+const suppliesReducer = (state = [], action) => {
   switch (action.type) {
     case "INITIALIZE_ITEMS":
       return action.payload;
@@ -79,4 +79,4 @@ export const deleteOneItem = (id) => {
   };
 };
 
-export default itemReducer;
+export default suppliesReducer;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { initializeItems } from "../reducers/itemReducer";
+import { initializeItems } from "../reducers/suppliesReducer";
 
 // components
 import ItemList from "../components/ItemList";
