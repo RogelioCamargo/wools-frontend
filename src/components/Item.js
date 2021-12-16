@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 // action creators
-import { deleteOneAnnouncement } from "../reducers/announcementReducer";
-import { deleteOneReminder } from "../reducers/reminderReducer";
-import { deleteOneTicket } from "../reducers/ticketReducer";
-import { deleteOneProduct } from "../reducers/productReducer";
-import { deleteOneItem } from "../reducers/itemReducer";
+import { updateOneAnnouncement, deleteOneAnnouncement } from "../reducers/announcementReducer";
+import { updateOneReminder, deleteOneReminder } from "../reducers/reminderReducer";
+import { updateOneTicket, deleteOneTicket } from "../reducers/ticketReducer";
+import { updateOneProduct, deleteOneProduct } from "../reducers/productReducer";
+import { updateOneItem, deleteOneItem } from "../reducers/itemReducer";
 
 // components
 import ActionButton from "./ActionButton";
@@ -33,7 +33,7 @@ const Item = ({ item, isMessage, isProduct }) => {
         <Level />
         <div className="px-2">
           <p className="m-0">{item.content}</p>
-          <p className="m-0 text-muted text-9rem">{item.date}</p>
+          <p className="m-0 text-muted h7">{item.date}</p>
         </div>
       </div>
       <ActionButton
@@ -66,7 +66,10 @@ const Item = ({ item, isMessage, isProduct }) => {
         <Level />
         <div className="px-2">
           <p className="m-0">{item.name}</p>
-          <p className="m-0 text-muted text-9rem">{item.date}</p>
+          {item.brand && (
+            <p className="m-0 text-muted h7">{item.brand}</p>
+          )}
+          <p className="m-0 text-muted h7">{item.date}</p>
         </div>
       </div>
       <ActionButton

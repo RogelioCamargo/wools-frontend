@@ -21,7 +21,7 @@ const ActionButton = ({ onClickUpdate, onClickDelete }) => {
   return (
     <>
       <OverlayTrigger trigger="click" placement="top" overlay={popover}>
-        <Button variant="light">
+        <Button variant="light" className="bg-white border-0">
           <EllipsisIcon />
         </Button>
       </OverlayTrigger>
