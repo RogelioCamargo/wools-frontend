@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { createOneProduct } from "../reducers/productReducer";
 import { createOneItem } from "../reducers/itemReducer";
 
-const ModalForm = ({ show, handleClose, isProduct }) => {
+const ModalForm = ({ title, show, handleClose, isProduct }) => {
   const [item, setItem] = useState({
     name: "",
     level: "0", 
@@ -14,9 +14,12 @@ const ModalForm = ({ show, handleClose, isProduct }) => {
 
   const handleSubmit = async () => {
     handleClose();
-    // console.log(item);
-    if (isProduct) dispatch(createOneProduct(item));
-    else dispatch(createOneItem(item));
+    const factored = {
+      ...item,
+      level: Number(item.level)
+    }
+    if (isProduct) dispatch(createOneProduct(factored));
+    else dispatch(createOneItem(factored));
 
     setItem({
       name: "",
@@ -29,7 +32,7 @@ const ModalForm = ({ show, handleClose, isProduct }) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

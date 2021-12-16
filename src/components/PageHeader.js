@@ -19,16 +19,18 @@ const PageHeader = ({ title, addButton, isProduct }) => {
             className="mt-2"
           >
             <PlusIcon />
-            Product
+            <span className="mx-1">Product</span>
           </Button>
           {isProduct ? (
             <ModalForm
+              title="Add New Inventory Item"
               show={show}
               handleClose={() => setShow(false)}
               isProduct
             />
           ) : (
             <ModalForm
+              title="Add New Supply Item"
               show={show}
               handleClose={() => setShow(false)}
             />
