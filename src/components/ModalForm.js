@@ -1,16 +1,28 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { createOneProduct } from "../reducers/productReducer";
+import { createOneItem } from "../reducers/itemReducer";
 
-const ModalForm = ({ show, handleClose, createResource }) => {
+const ModalForm = ({ show, handleClose, isProduct }) => {
   const [item, setItem] = useState({
     name: "",
     level: "0", 
     brand: ""
   });
+  const dispatch = useDispatch();
 
   const handleSubmit = async () => {
     handleClose();
-    await createResource({ ...item, level: Number(item.level) });
+    // console.log(item);
+    if (isProduct) dispatch(createOneProduct(item));
+    else dispatch(createOneItem(item));
+
+    setItem({
+      name: "",
+      level: "0",
+      brand: "",
+    });
   };
 
   return (

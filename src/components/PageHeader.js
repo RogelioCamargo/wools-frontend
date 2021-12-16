@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import PlusIcon from "../components/PlusIcon";
 
 // components
 import ModalForm from "../components/ModalForm";
+import PlusIcon from "../components/PlusIcon";
 
-const PageHeader = ({ title, addButton }) => {
+const PageHeader = ({ title, addButton, isProduct }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -21,7 +21,18 @@ const PageHeader = ({ title, addButton }) => {
             <PlusIcon />
             Product
           </Button>
-          <ModalForm show={show} handleClose={() => setShow(false)} />
+          {isProduct ? (
+            <ModalForm
+              show={show}
+              handleClose={() => setShow(false)}
+              isProduct
+            />
+          ) : (
+            <ModalForm
+              show={show}
+              handleClose={() => setShow(false)}
+            />
+          )}
         </>
       ) : null}
     </div>
