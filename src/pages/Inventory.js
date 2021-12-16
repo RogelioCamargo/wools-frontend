@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useResource } from "../hooks";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { initializeProducts } from "../reducers/productReducer";
 
 // components
 import ItemList from "../components/ItemList";
@@ -9,12 +10,17 @@ import ModalForm from "../components/ModalForm";
 import { Form } from "react-bootstrap";
 
 const Inventory = () => {
-  const [products, service] = useResource("http://localhost:3001/api/products");
   const [filter, setFilter] = useState("");
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(initializeProducts());
+  }, [dispatch]);
+
+  const products = useSelector(state => state.products);
   const criticals = products.filter((item) => !item.level);
-  const filtered = products.filter((item) =>
+  const matches = products.filter((item) =>
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
   return (
@@ -33,12 +39,11 @@ const Inventory = () => {
       />
       <div>
         <Header title="Other" />
-        <ItemList items={filtered} />
+        <ItemList items={matches} />
       </div>
       <ModalForm
         show={show}
         handleClose={() => setShow(false)}
-        createResource={service.create}
       />
     </div>
   );
