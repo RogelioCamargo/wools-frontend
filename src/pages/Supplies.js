@@ -29,7 +29,7 @@ const Supplies = () => {
       />
       <div>
         <Header title="Critical" />
-        <ItemList items={criticals} />
+        <ItemList items={criticals} isCritialList />
       </div>
       <Form.Control
         className="my-3"

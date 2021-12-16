@@ -2,11 +2,17 @@ import React from "react";
 
 import Item from "../components/Item";
 
-const ItemList = ({ items, isMessage }) => {
-	if (!items.length) 
+const ItemList = ({ items, isMessage, isCritialList }) => {
+	if (!items.length && isCritialList) 
 		return (
-      <div className="text-secondary">There are none that require attention.</div>
+      <div className="text-secondary">There are none that require immediate attention.</div>
     );
+
+	if (!items.length)
+		return (
+			<div className="text-secondary">There are no matches.</div>
+		);
+	
 	return (
 		<>
 			{
