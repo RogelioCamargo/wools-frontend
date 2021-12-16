@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import EllipsisIcon from "./EllipsisIcon";
+import ActionButton from "./ActionButton";
 
 const Item = ({ title, date, level }) => {
   return (
@@ -22,7 +22,7 @@ const Item = ({ title, date, level }) => {
           <p className="m-0 text-muted text-9rem">{date}</p>
         </div>
       </div>
-      <EllipsisIcon />
+      <ActionButton />
     </div>
   );
 };
