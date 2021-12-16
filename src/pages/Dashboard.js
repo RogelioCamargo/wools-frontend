@@ -1,27 +1,28 @@
-import React from "react";
-import { useResource } from "../hooks";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { initializeAnnouncements } from "../reducers/announcementReducer";
+import { initializeReminders } from "../reducers/reminderReducer";
+import { initializeTickets } from "../reducers/ticketReducer";
 
 // components
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
 import Header from "../components/Header";
+import PlusIcon from "../components/PlusIcon";
 import { Button } from "react-bootstrap";
 
 const Dashboard = () => {
-  const [announcments, aService] = useResource(
-    "http://localhost:3001/api/messages",
-    "type=announcement"
-  );
+  const dispatch = useDispatch();
 
-  const [reminders, rServices] = useResource(
-    "http://localhost:3001/api/messages",
-    "type=reminder"
-  );
+  useEffect(() => {
+    dispatch(initializeAnnouncements());
+    dispatch(initializeReminders());
+    dispatch(initializeTickets());
+  }, [dispatch]);
 
-  const [tickets, tServices] = useResource(
-    "http://localhost:3001/api/messages",
-    "type=ticket"
-  );
+  const announcments = useSelector((state) => state.announcements);
+  const reminders = useSelector(state => state.reminders);
+  const tickets = useSelector(state => state.tickets);
 
 	return (
     <div className="w-75 mx-auto my-5">
@@ -33,16 +34,7 @@ const Dashboard = () => {
           isMessage
         />
         <Button variant="outline-primary" className="mt-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-plus"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-          </svg>{" "}
+          <PlusIcon />
           Announcment
         </Button>
       </div>
@@ -53,16 +45,7 @@ const Dashboard = () => {
           isMessage
         />
         <Button variant="outline-primary" className="mt-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-plus"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-          </svg>{" "}
+          <PlusIcon />
           Reminder
         </Button>
       </div>
@@ -70,16 +53,7 @@ const Dashboard = () => {
         <Header title="Tickets" />
         <ItemList items={tickets.sort((a, b) => a.level - b.level)} isMessage />
         <Button variant="outline-primary" className="mt-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-plus"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-          </svg>
+          <PlusIcon />
           Ticket
         </Button>
       </div>
