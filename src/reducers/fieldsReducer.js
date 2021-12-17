@@ -1,4 +1,5 @@
 const initalState = {
+  id: "",
   name: "",
   content: "",
   level: "0",
@@ -8,6 +9,8 @@ const initalState = {
 
 const fieldsReducer = (state = initalState, action) => {
   switch (action.type) {
+    case "SET": 
+      return { ...state, ...action.payload };
     case "UPDATE_NAME":
       return { ...state, name: action.payload };
     case "UPDATE_LEVEL":
@@ -23,6 +26,13 @@ const fieldsReducer = (state = initalState, action) => {
     default:
       return state;
   }
+};
+
+export const set = (details) => {
+  return {
+    type: "SET",
+    payload: details
+  };
 };
 
 export const updateName = (name) => {
