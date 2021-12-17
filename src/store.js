@@ -9,6 +9,7 @@ import ticketReducer from "./reducers/ticketReducer";
 import suppliesReducer from "./reducers/suppliesReducer";
 import productReducer from "./reducers/productReducer";
 import fieldsReducer from "./reducers/fieldsReducer";
+import modalReducer from "./reducers/modalReducer";
 
 const reducer = combineReducers({
   announcements: announcementReducer,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   supplies: suppliesReducer,
   products: productReducer,
   fields: fieldsReducer,
+	modals: modalReducer
 });
 
 export default createStore(
