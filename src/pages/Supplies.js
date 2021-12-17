@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { initializeItems } from "../reducers/suppliesReducer";
+import { toggleSuppliesModal } from "../reducers/modalReducer";
 
 // components
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
+import ModalForm from "../components/ModalForm";
 import Header from "../components/Header";
 import { Form } from "react-bootstrap";
 
@@ -17,6 +19,8 @@ const Supplies = () => {
   }, [dispatch]);
 
   const supplies = useSelector(state => state.supplies);
+  const show = useSelector(state => state.modals.suppliesModal);
+
   const criticals = supplies.filter(item => !item.level);
   const matches = supplies.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
 
@@ -24,8 +28,7 @@ const Supplies = () => {
     <div className="w-75 mx-auto my-5">
       <PageHeader
         title="Supplies"
-        onClick={() => console.log("Supplies")}
-        addButton
+        onClick={() => dispatch(toggleSuppliesModal(!show))}
       />
       <div>
         <Header title="Critical" />
@@ -42,6 +45,11 @@ const Supplies = () => {
         <Header title="Other" />
         <ItemList items={matches} />
       </div>
+      <ModalForm
+        title="Add New Supply Item"
+        show={show}
+        handleClose={() => dispatch(toggleSuppliesModal(!show))}
+      />
     </div>
   );
 };
