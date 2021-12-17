@@ -1,31 +1,17 @@
-import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import React from "react";
+import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createOneProduct } from "../reducers/productReducer";
 import { createOneItem } from "../reducers/suppliesReducer";
 
-const ModalForm = ({ title, show, handleClose, isProduct }) => {
-  const [item, setItem] = useState({
-    name: "",
-    level: "0", 
-    brand: ""
-  });
+// components
+import Form from "./Form";
+
+const ModalForm = ({ title, show, handleClose, isMessage }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = async () => {
-    handleClose();
-    const factored = {
-      ...item,
-      level: Number(item.level)
-    }
-    if (isProduct) dispatch(createOneProduct(factored));
-    else dispatch(createOneItem(factored));
 
-    setItem({
-      name: "",
-      level: "0",
-      brand: "",
-    });
   };
 
   return (
@@ -35,38 +21,7 @@ const ModalForm = ({ title, show, handleClose, isProduct }) => {
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-2">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={item.name}
-                onChange={({ target }) =>
-                  setItem({ ...item, name: target.value })
-                }
-                placeholder="i.e. Orange Squeeze"
-              />
-            </Form.Group>
-            <Form.Group className="mb-2">
-              <Form.Label htmlFor="inlineFormCustomSelect">Level</Form.Label>
-              <Form.Select
-                id="inlineFormCustomSelect"
-                value={item.level}
-                onChange={({ target }) =>
-                  setItem({ ...item, level: target.value })
-                }
-              >
-                <option value="0">Low</option>
-                <option value="1">Medium</option>
-                <option value="2">High</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-4">
-              <Form.Label>Brand</Form.Label>
-              <Form.Control type="text" name="brand" placeholder="Optional" />
-            </Form.Group>
-          </Form>
+          {isMessage ? <Form isMessage /> : <Form />}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

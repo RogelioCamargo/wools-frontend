@@ -2,7 +2,7 @@ const initalState = {
   name: "",
   content: "",
   level: "0",
-  type: "",
+  type: "announcment",
   brand: "",
 };
 
@@ -27,35 +27,35 @@ const fieldsReducer = (state = initalState, action) => {
 
 export const updateName = (name) => {
   return {
-    type: "UPATE_NAME",
+    type: "UPDATE_NAME",
     payload: name,
   };
 };
 
 export const updateContent = (content) => {
   return {
-    type: "UPATE_CONTENT",
+    type: "UPDATE_CONTENT",
     payload: content,
   };
 };
 
 export const updateLevel = (level) => {
   return {
-    type: "UPATE_LEVEL",
+    type: "UPDATE_LEVEL",
     payload: level,
   };
 };
 
 export const updateType = (type) => {
   return {
-    type: "UPATE_TYPE",
+    type: "UPDATE_TYPE",
     payload: type,
   };
 };
 
 export const updateBrand = (brand) => {
   return {
-    type: "UPATE_BRAND",
+    type: "UPDATE_BRAND",
     payload: brand,
   };
 };

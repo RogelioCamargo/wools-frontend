@@ -57,6 +57,7 @@ const Dashboard = () => {
         title="Add New Message Item"
         show={show}
         handleClose={() => dispatch(toggleMessageModal(!show))}
+        isMessage
       />
     </div>
   );
