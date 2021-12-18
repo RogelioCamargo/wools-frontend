@@ -3,6 +3,13 @@ import React from "react";
 import Item from "../components/Item";
 
 const ItemList = ({ items, isCritialList, isMessage, isProduct }) => {
+  if (!items.length && isMessage)
+    return (
+      <div className="text-secondary">
+        There are no messages.
+      </div>
+    );
+
 	if (!items.length && isCritialList) 
 		return (
       <div className="text-secondary">There are none that require immediate attention.</div>

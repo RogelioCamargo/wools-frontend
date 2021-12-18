@@ -24,3 +24,16 @@
 	text-decoration: none;
 }
 
+/* Header */
+
+
+/* Aside */
+.main-aside {
+	height: calc(100vh - 50px);
+}
+
+/* Main */
+.main-content {
+	height: calc(100vh - 50px);
+	overflow: auto;
+}

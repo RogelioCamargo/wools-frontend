@@ -13,16 +13,16 @@ function App() {
     <div>
       <div className="bg-primary" style={{ height: "50px" }}></div>
       <div className="d-flex">
-        <div className="col-3 bg-light">
+        <aside className="col-3 bg-light main-aside">
           <LeftNavigationBar />
-        </div>
-        <div className="col-9">
+        </aside>
+        <main className="col-9 main-content">
           <Routes>
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/supplies" element={<Supplies />} />
             <Route path="/" element={<Dashboard />} />
           </Routes>
-        </div>
+        </main>
       </div>
     </div>
   );
