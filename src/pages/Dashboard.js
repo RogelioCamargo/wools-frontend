@@ -8,7 +8,7 @@ import { toggleMessageModal } from "../reducers/modalReducer";
 // components
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
-import Header from "../components/Header";
+import Title from "../components/Title";
 import ModalForm from "../components/ModalForm";
 
 const Dashboard = () => {
@@ -33,21 +33,21 @@ const Dashboard = () => {
         isMessage
       />
       <div className="mb-4">
-        <Header title="Announcments" />
+        <Title title="Announcments" />
         <ItemList
           items={announcements.sort((a, b) => a.level - b.level)}
           isMessage
         />
       </div>
       <div className="mb-4">
-        <Header title="Reminders" />
+        <Title title="Reminders" />
         <ItemList
           items={reminders.sort((a, b) => a.level - b.level)}
           isMessage
         />
       </div>
       <div>
-        <Header title="Tickets" />
+        <Title title="Tickets" />
         <ItemList items={tickets.sort((a, b) => a.level - b.level)} isMessage />
       </div>
       <ModalForm

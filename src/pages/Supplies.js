@@ -7,7 +7,7 @@ import { toggleSuppliesModal } from "../reducers/modalReducer";
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
 import ModalForm from "../components/ModalForm";
-import Header from "../components/Header";
+import Title from "../components/Title";
 import { Form } from "react-bootstrap";
 
 const Supplies = () => {
@@ -31,7 +31,7 @@ const Supplies = () => {
         onClick={() => dispatch(toggleSuppliesModal(!show))}
       />
       <div>
-        <Header title="Critical" />
+        <Title title="Critical" />
         <ItemList items={criticals} isCritialList />
       </div>
       <Form.Control
@@ -42,7 +42,7 @@ const Supplies = () => {
         onChange={(e) => setFilter(e.target.value)}
       />
       <div>
-        <Header title="Other" />
+        <Title title="All" />
         <ItemList items={matches} />
       </div>
       <ModalForm

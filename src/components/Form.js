@@ -24,10 +24,7 @@ const MyForm = ({ isMessage }) => {
             type="text"
             name="content"
             value={fields.content}
-            onChange={({ target }) => {
-              console.log(target.value);
-              dispatch(updateContent(target.value));
-            }}
+            onChange={({ target }) => dispatch(updateContent(target.value))}
             placeholder="i.e. Schedule Roadie"
           />
         </Form.Group>
@@ -38,10 +35,7 @@ const MyForm = ({ isMessage }) => {
             type="text"
             name="name"
             value={fields.name}
-            onChange={({ target }) => {
-              console.log(target.value);
-              dispatch(updateName(target.value));
-            }}
+            onChange={({ target }) => dispatch(updateName(target.value))}
             placeholder="i.e. Orange Squeeze"
           />
         </Form.Group>
@@ -53,10 +47,7 @@ const MyForm = ({ isMessage }) => {
             id="inlineFormCustomSelect"
             name="level"
             value={fields.level}
-            onChange={({ target }) => {
-              console.log(target.value);
-              dispatch(updateLevel(target.value));
-            }}
+            onChange={({ target }) => dispatch(updateLevel(target.value))}
           >
             <option value="0">High</option>
             <option value="1">Medium</option>
@@ -70,10 +61,7 @@ const MyForm = ({ isMessage }) => {
             id="inlineFormCustomSelect"
             name="level"
             value={fields.level}
-            onChange={({ target }) => {
-              console.log(target.value);
-              dispatch(updateLevel(target.value));
-            }}
+            onChange={({ target }) => dispatch(updateLevel(target.value))}
           >
             <option value="0">Low</option>
             <option value="1">Medium</option>

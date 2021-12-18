@@ -9,7 +9,7 @@ import { toggleProductModal } from "../reducers/modalReducer";
 import ItemList from "../components/ItemList";
 import PageHeader from "../components/PageHeader";
 import ModalForm from "../components/ModalForm";
-import Header from "../components/Header";
+import Title from "../components/Title";
 import { Form } from "react-bootstrap";
 
 const Inventory = () => {
@@ -34,7 +34,7 @@ const Inventory = () => {
         onClick={() => dispatch(toggleProductModal())}
       />
       <div>
-        <Header title="Critical" />
+        <Title title="Critical" />
         <ItemList items={criticals} isCritialList isProduct />
       </div>
       <Form.Control
@@ -45,7 +45,7 @@ const Inventory = () => {
         onChange={(e) => setFilter(e.target.value)}
       />
       <div>
-        <Header title="Other" />
+        <Title title="All" />
         <ItemList items={matches} isProduct />
       </div>
       <ModalForm
