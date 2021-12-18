@@ -1,7 +1,3 @@
-/* html {
-	font-size: 14px;
-} */
-
 .bg-muted {
 	background-color: #dfdfdf;
 }
@@ -22,6 +18,10 @@
 
 .no-text-decoration {
 	text-decoration: none;
+}
+
+.overflow-x {
+	overflow-x: hidden;
 }
 
 /* Header */
