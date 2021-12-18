@@ -1,6 +1,6 @@
 import itemService from "../services/itemService";
 
-const url = "http://localhost:3001/api/supplies";
+const url = "/api/supplies";
 
 const suppliesReducer = (state = [], action) => {
   switch (action.type) {

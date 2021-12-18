@@ -1,6 +1,6 @@
 import itemService from "../services/itemService";
 
-const url = "http://localhost:3001/api/messages";
+const url = "/api/messages";
 
 const messageReducer = (state = [], action) => {
   switch (action.type) {
