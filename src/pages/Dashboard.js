@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // action creators
-import { initializeAnnouncements } from "../reducers/announcementReducer";
-import { initializeReminders } from "../reducers/reminderReducer";
-import { initializeTickets } from "../reducers/ticketReducer";
+import { initializeMessages } from "../reducers/messageReducer";
 import { toggleMessageModal } from "../reducers/modalReducer";
 
 // components
@@ -17,16 +15,15 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializeAnnouncements());
-    dispatch(initializeReminders());
-    dispatch(initializeTickets());
+    dispatch(initializeMessages());
   }, [dispatch]);
 
   const show = useSelector(state => state.modals.messageModal);
+  const messages = useSelector(state => state.messages);
 
-  const announcments = useSelector(state => state.announcements);
-  const reminders = useSelector(state => state.reminders);
-  const tickets = useSelector(state => state.tickets);
+  const announcements = messages.filter((item) => item.type === "announcement");
+  const reminders = messages.filter((item) => item.type === "reminder");
+  const tickets = messages.filter((item) => item.type === "ticket");
 
 	return (
     <div className="w-75 mx-auto my-5">
@@ -38,7 +35,7 @@ const Dashboard = () => {
       <div className="mb-4">
         <Header title="Announcments" />
         <ItemList
-          items={announcments.sort((a, b) => a.level - b.level)}
+          items={announcements.sort((a, b) => a.level - b.level)}
           isMessage
         />
       </div>

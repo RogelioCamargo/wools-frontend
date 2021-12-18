@@ -2,31 +2,31 @@ import itemService from "../services/itemService";
 
 const url = "http://localhost:3001/api/messages";
 
-const announcementReducer = (state = [], action) => {
+const messageReducer = (state = [], action) => {
   switch (action.type) {
-    case "INITIALIZE_ANNOUNCEMENTS":
+    case "INITIALIZE_MESSAGES":
       return action.payload;
-    case "CREATE_ANNOUNCEMENT":
+    case "CREATE_MESSAGE":
       return [...state, action.payload];
-    case "UPDATE_ANNOUNCEMENT":
-      return state.map((blog) => {
-        if (blog.id === action.payload.id) return action.payload;
-        else return blog;
+    case "UPDATE_MESSAGE":
+      return state.map((item) => {
+        if (item.id === action.payload.id) return action.payload;
+        else return item;
       });
-    case "DELETE_ANNOUNCEMENT":
-      return state.filter((blog) => blog.id !== action.payload);
+    case "DELETE_MESSAGE":
+      return state.filter((item) => item.id !== action.payload);
     default:
       return state;
   }
 };
 
-export const initializeAnnouncements = () => {
+export const initializeMessages = () => {
   return async (dispatch) => {
     try {
-      const items = await itemService.getAll(`${url}/?type=announcement`);
+      const messages = await itemService.getAll(`${url}`);
       dispatch({
-        type: "INITIALIZE_ANNOUNCEMENTS",
-        payload: items,
+        type: "INITIALIZE_MESSAGES",
+        payload: messages,
       });
     } catch (error) {
       console.log(error);
@@ -34,12 +34,12 @@ export const initializeAnnouncements = () => {
   };
 };
 
-export const createOneAnnouncement = (message) => {
+export const createOneMessage = (message) => {
   return async (dispatch) => {
     try {
       const newMessage = await itemService.createOne(url, message);
       dispatch({
-        type: "CREATE_ANNOUNCEMENT",
+        type: "CREATE_MESSAGE",
         payload: newMessage,
       });
     } catch (error) {
@@ -48,15 +48,12 @@ export const createOneAnnouncement = (message) => {
   };
 };
 
-export const updateOneAnnouncement = (message) => {
+export const updateOneMessage = (message) => {
   return async (dispatch) => {
     try {
-      const updatedMessage = await itemService.updateOne(
-        url,
-        message
-      );
+      const updatedMessage = await itemService.updateOne(url, message);
       dispatch({
-        type: "UPDATE_ANNOUNCEMENT",
+        type: "UPDATE_MESSAGE",
         payload: updatedMessage,
       });
     } catch (error) {
@@ -65,12 +62,12 @@ export const updateOneAnnouncement = (message) => {
   };
 };
 
-export const deleteOneAnnouncement = (id) => {
+export const deleteOneMessage = (id) => {
   return async (dispatch) => {
     try {
       await itemService.deleteOne(url, id);
       dispatch({
-        type: "DELETE_ANNOUNCEMENT",
+        type: "DELETE_MESSAGE",
         payload: id,
       });
     } catch (error) {
@@ -79,4 +76,4 @@ export const deleteOneAnnouncement = (id) => {
   };
 };
 
-export default announcementReducer;
+export default messageReducer;

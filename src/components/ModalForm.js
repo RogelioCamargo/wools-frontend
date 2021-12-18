@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // action creators
 import { createOneProduct, updateOneProduct } from "../reducers/productReducer";
 import { createOneItem, updateOneItem } from "../reducers/suppliesReducer";
-import { createOneAnnouncement, updateOneAnnouncement } from "../reducers/announcementReducer";
-import { createOneReminder, updateOneReminder } from "../reducers/reminderReducer";
-import { createOneTicket, updateOneTicket } from "../reducers/ticketReducer";
+import { createOneMessage, updateOneMessage } from "../reducers/messageReducer";
 import { reset } from "../reducers/fieldsReducer";
 
 // components
@@ -35,17 +33,8 @@ const ModalForm = ({ title, show, handleClose, isMessage, isProduct }) => {
         level: fields.level,
         type: fields.type
       }
-      console.log("ISANNOUNCEMENT", fields.type === "announcement");
-      if (fields.type === "announcement") {
-        if (!fields.id) dispatch(createOneAnnouncement(message));
-        else dispatch(updateOneAnnouncement({ ...message, id: fields.id }));
-      } else if (fields.type === "reminder") {
-        if (!fields.id) dispatch(createOneReminder(message));
-        else dispatch(updateOneReminder({ ...message, id: fields.id }));
-      } else {
-        if (!fields.id) dispatch(createOneTicket(message));
-        else dispatch(updateOneTicket({ ...message, id: fields.id }));
-      }
+      if (!fields.id) dispatch(createOneMessage(message));
+      else dispatch(updateOneMessage({ ...message, id: fields.id }));
     }
     else if (isProduct) {
       if (!fields.id) dispatch(createOneProduct(product));

@@ -3,18 +3,14 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // reducers
-import announcementReducer from "./reducers/announcementReducer";
-import reminderReducer from "./reducers/reminderReducer";
-import ticketReducer from "./reducers/ticketReducer";
+import messageReducer from "./reducers/messageReducer";
 import suppliesReducer from "./reducers/suppliesReducer";
 import productReducer from "./reducers/productReducer";
 import fieldsReducer from "./reducers/fieldsReducer";
 import modalReducer from "./reducers/modalReducer";
 
 const reducer = combineReducers({
-  announcements: announcementReducer,
-  reminders: reminderReducer,
-  tickets: ticketReducer,
+  messages: messageReducer,
   supplies: suppliesReducer,
   products: productReducer,
   fields: fieldsReducer,

@@ -2,9 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 // action creators
-import { deleteOneAnnouncement } from "../reducers/announcementReducer";
-import { deleteOneReminder } from "../reducers/reminderReducer";
-import { deleteOneTicket } from "../reducers/ticketReducer";
+import { deleteOneMessage } from "../reducers/messageReducer";
 import { deleteOneProduct } from "../reducers/productReducer";
 import { deleteOneItem } from "../reducers/suppliesReducer";
 import { set } from "../reducers/fieldsReducer";
@@ -48,18 +46,9 @@ const Item = ({ item, isMessage, isProduct }) => {
   );
 
   if (isMessage) {
-    const typeAnnouncementDelete = () => dispatch(deleteOneAnnouncement(item.id));
-    const typeReminderDelete = () => dispatch(deleteOneReminder(item.id));
-    const typeTicketDelete = () => dispatch(deleteOneTicket(item.id));
     return (
       <MessageDisplay
-        onClickDelete={
-          item.type === "reminder"
-            ? typeReminderDelete
-            : item.type === "ticket"
-            ? typeTicketDelete
-            : typeAnnouncementDelete
-        }
+        onClickDelete={() => dispatch(deleteOneMessage(item.id))}
         onClickUpdate={() => {
           dispatch(toggleMessageModal());
           dispatch(set(item));
