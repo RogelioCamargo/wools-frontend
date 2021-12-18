@@ -24,6 +24,7 @@ export const initializeReminders = () => {
   return async (dispatch) => {
     try {
       const items = await itemService.getAll(`${url}/?type=reminder`);
+      console.log(items);
       dispatch({
         type: "INITIALIZE_REMINDERS",
         payload: items,

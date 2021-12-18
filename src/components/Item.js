@@ -8,6 +8,9 @@ import { deleteOneTicket } from "../reducers/ticketReducer";
 import { deleteOneProduct } from "../reducers/productReducer";
 import { deleteOneItem } from "../reducers/suppliesReducer";
 import { set } from "../reducers/fieldsReducer";
+import { toggleProductModal } from "../reducers/modalReducer";
+import { toggleMessageModal } from "../reducers/modalReducer";
+import { toggleSuppliesModal } from "../reducers/modalReducer";
 
 // components
 import ActionButton from "./ActionButton";
@@ -57,7 +60,10 @@ const Item = ({ item, isMessage, isProduct }) => {
             ? typeTicketDelete
             : typeAnnouncementDelete
         }
-        onClickUpdate={() => dispatch(set(item))}
+        onClickUpdate={() => {
+          dispatch(toggleMessageModal());
+          dispatch(set(item));
+        }}
       />
     );
   }
@@ -86,13 +92,18 @@ const Item = ({ item, isMessage, isProduct }) => {
       {isProduct ? (
         <ItemDisplay
           onClickDelete={() => dispatch(deleteOneProduct(item.id))}
-          onClickUpdate={() => dispatch(set(item))}
+          onClickUpdate={() => {
+            dispatch(toggleProductModal());
+            dispatch(set(item))
+          }}
         />
       ) : (
         <ItemDisplay 
           onClickDelete={() => dispatch(deleteOneItem(item.id))}
-          onClickUpdate={() => dispatch(set(item))} 
-
+          onClickUpdate={() => {
+            dispatch(toggleSuppliesModal());
+            dispatch(set(item))
+          }}
         />
       )}
     </>

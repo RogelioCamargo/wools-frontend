@@ -3,13 +3,14 @@ const initalState = {
   name: "",
   content: "",
   level: "0",
-  type: "announcment",
+  type: "announcement",
   brand: "",
 };
 
 const fieldsReducer = (state = initalState, action) => {
   switch (action.type) {
     case "SET": 
+      console.log(action.payload);
       return { ...state, ...action.payload };
     case "UPDATE_NAME":
       return { ...state, name: action.payload };

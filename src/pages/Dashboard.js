@@ -22,9 +22,9 @@ const Dashboard = () => {
     dispatch(initializeTickets());
   }, [dispatch]);
 
-  const announcments = useSelector((state) => state.announcements);
   const show = useSelector(state => state.modals.messageModal);
 
+  const announcments = useSelector(state => state.announcements);
   const reminders = useSelector(state => state.reminders);
   const tickets = useSelector(state => state.tickets);
 

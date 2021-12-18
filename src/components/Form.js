@@ -26,7 +26,7 @@ const MyForm = ({ isMessage }) => {
             value={fields.content}
             onChange={({ target }) => {
               console.log(target.value);
-              dispatch(updateContent(target.value))
+              dispatch(updateContent(target.value));
             }}
             placeholder="i.e. Schedule Roadie"
           />
@@ -40,33 +40,54 @@ const MyForm = ({ isMessage }) => {
             value={fields.name}
             onChange={({ target }) => {
               console.log(target.value);
-              dispatch(updateName(target.value))
+              dispatch(updateName(target.value));
             }}
             placeholder="i.e. Orange Squeeze"
           />
         </Form.Group>
       )}
-      <Form.Group className="mb-2">
-        <Form.Label htmlFor="inlineFormCustomSelect">Level</Form.Label>
-        <Form.Select
-          id="inlineFormCustomSelect"
-          value={fields.level}
-          onChange={({ target }) => {
-            console.log(target.value);
-            dispatch(updateLevel(target.value))
-          }}
-        >
-          <option value="0">Low</option>
-          <option value="1">Medium</option>
-          <option value="2">High</option>
-        </Form.Select>
-      </Form.Group>
       {isMessage ? (
         <Form.Group className="mb-2">
-          <Form.Label htmlFor="inlineFormCustomSelect">Level</Form.Label>
+          <Form.Label htmlFor="inlineFormCustomSelect">Priority</Form.Label>
+          <Form.Select
+            id="inlineFormCustomSelect"
+            name="level"
+            value={fields.level}
+            onChange={({ target }) => {
+              console.log(target.value);
+              dispatch(updateLevel(target.value));
+            }}
+          >
+            <option value="0">High</option>
+            <option value="1">Medium</option>
+            <option value="2">Low</option>
+          </Form.Select>
+        </Form.Group>
+      ) : (
+        <Form.Group className="mb-2">
+          <Form.Label htmlFor="inlineFormCustomSelect">Stock</Form.Label>
+          <Form.Select
+            id="inlineFormCustomSelect"
+            name="level"
+            value={fields.level}
+            onChange={({ target }) => {
+              console.log(target.value);
+              dispatch(updateLevel(target.value));
+            }}
+          >
+            <option value="0">Low</option>
+            <option value="1">Medium</option>
+            <option value="2">High</option>
+          </Form.Select>
+        </Form.Group>
+      )}
+      {isMessage ? (
+        <Form.Group className="mb-2">
+          <Form.Label htmlFor="inlineFormCustomSelect">Type</Form.Label>
           <Form.Select
             id="inlineFormCustomSelect"
             value={fields.type}
+            name="type"
             onChange={({ target }) => dispatch(updateType(target.value))}
           >
             <option value="announcement">Announcment</option>
@@ -75,16 +96,17 @@ const MyForm = ({ isMessage }) => {
           </Form.Select>
         </Form.Group>
       ) : (
-				<Form.Group className="mb-4">
-					<Form.Label>Brand</Form.Label>
-					<Form.Control
-						type="text"
-						name="brand"
-						onChange={({ target }) => dispatch(updateBrand(target.value))}
-						placeholder="i.e Olipop"
-					/>
-				</Form.Group>
-			)}
+        <Form.Group className="mb-4">
+          <Form.Label>Brand</Form.Label>
+          <Form.Control
+            type="text"
+            name="brand"
+            value={fields.brand}
+            onChange={({ target }) => dispatch(updateBrand(target.value))}
+            placeholder="i.e Olipop"
+          />
+        </Form.Group>
+      )}
     </Form>
   );
 }

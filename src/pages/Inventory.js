@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+// action creators
 import { initializeProducts } from "../reducers/productReducer";
 import { toggleProductModal } from "../reducers/modalReducer";
 
@@ -29,7 +31,7 @@ const Inventory = () => {
     <div className="w-75 mx-auto my-5">
       <PageHeader
         title="Inventory"
-        onClick={() => dispatch(toggleProductModal(!show))}
+        onClick={() => dispatch(toggleProductModal())}
       />
       <div>
         <Header title="Critical" />
@@ -49,7 +51,7 @@ const Inventory = () => {
       <ModalForm
         title="Add New Inventory Item"
         show={show}
-        handleClose={() => dispatch(toggleProductModal(!show))}
+        handleClose={() => dispatch(toggleProductModal())}
         isProduct
       />
     </div>

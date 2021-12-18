@@ -6,13 +6,13 @@ const getAll = async (url) => {
   return response.data;
 };
 
-const createOne = async (url, message) => {
-  const response = await axios.post(url, message);
+const createOne = async (url, item) => {
+  const response = await axios.post(url, item);
   return response.data;
 };
 
-const updateOne = async (url, message) => {
-  const response = await axios.put(url + `/${message.id}`, message);
+const updateOne = async (url, item) => {
+  const response = await axios.put(url + `/${item.id}`, item);
   return response.data;
 };
 

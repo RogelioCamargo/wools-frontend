@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // reducers
 import announcementReducer from "./reducers/announcementReducer";
-import reminderReducer from "./reducers/announcementReducer";
+import reminderReducer from "./reducers/reminderReducer";
 import ticketReducer from "./reducers/ticketReducer";
 import suppliesReducer from "./reducers/suppliesReducer";
 import productReducer from "./reducers/productReducer";
