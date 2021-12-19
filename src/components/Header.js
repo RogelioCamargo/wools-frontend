@@ -32,7 +32,7 @@ const Header = () => {
 								<Offcanvas.Title>Menu</Offcanvas.Title>
 							</Offcanvas.Header>
 							<Offcanvas.Body>
-								<LinkList />
+								<LinkList onClick={toggleShow}/>
 							</Offcanvas.Body>
 						</Offcanvas>
 					</div>
