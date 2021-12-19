@@ -12,7 +12,7 @@ import Supplies from "./pages/Supplies";
 
 function App() {
   return (
-    <div className="mw-100 mh-100 overflow-x-hidden">
+    <div className="mw-100 h-100 overflow-x-hidden">
       <Header />
       <div className="row">
         <aside className="col-sm-3 d-none d-sm-block bg-light main-aside">
