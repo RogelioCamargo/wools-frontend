@@ -18,7 +18,7 @@ function App() {
         <aside className="col-sm-3 d-none d-sm-block bg-light main-aside">
           <LeftNavigationBar />
         </aside>
-        <main className="col-sm-9 main-content">
+        <main className="col-sm-9 main-content pb-10">
           <Routes>
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/supplies" element={<Supplies />} />

@@ -20,6 +20,10 @@ body{
 	font-size: .8rem;
 }
 
+.pb-10 {
+	padding-bottom: 6rem;
+}
+
 .no-text-decoration {
 	text-decoration: none;
 }
