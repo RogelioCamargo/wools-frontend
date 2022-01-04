@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 // action creators
 import { initializeProducts } from "../reducers/productReducer";
@@ -15,10 +16,12 @@ import { Form } from "react-bootstrap";
 const Inventory = () => {
   const [filter, setFilter] = useState("");
   const dispatch = useDispatch();
+	const history = useHistory();
 
   useEffect(() => {
+		history.go();
     dispatch(initializeProducts());
-  }, [dispatch]);
+  }, [dispatch, history]);
 
   const products = useSelector(state => state.products);
   const show = useSelector(state => state.modals.productModal);

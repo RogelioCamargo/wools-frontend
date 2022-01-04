@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { initializeItems } from "../reducers/suppliesReducer";
 import { toggleSuppliesModal } from "../reducers/modalReducer";
+import { useHistory } from "react-router-dom";
 
 // components
 import ItemList from "../components/ItemList";
@@ -13,10 +14,12 @@ import { Form } from "react-bootstrap";
 const Supplies = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState("");
+	const history = useHistory();
 
   useEffect(() => {
+		history.go();		
     dispatch(initializeItems());
-  }, [dispatch]);
+  }, [dispatch, history]);
 
   const supplies = useSelector(state => state.supplies);
   const show = useSelector(state => state.modals.suppliesModal);
