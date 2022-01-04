@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // components
 import LeftNavigationBar from "./components/LeftNavigationBar";
@@ -23,6 +23,7 @@ function App() {
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/supplies" element={<Supplies />} />
             <Route path="/" element={<Dashboard />} />
+						<Route path="*" element={<Navigate to="/"/>} />
           </Routes>
         </main>
       </div>
