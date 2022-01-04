@@ -26,7 +26,7 @@ const Dashboard = () => {
   const tickets = messages.filter((item) => item.type === "ticket");
 
 	return (
-    <div className="w-75 mx-auto my-5">
+    <div className="w-75 mx-auto py-5">
       <PageHeader
         title="Dashboard"
         onClick={() => dispatch(toggleMessageModal(!show))}

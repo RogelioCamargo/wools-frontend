@@ -25,7 +25,7 @@ const Supplies = () => {
   const matches = supplies.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
-    <div className="w-75 mx-auto my-5">
+    <div className="w-75 mx-auto py-5">
       <PageHeader
         title="Supplies"
         onClick={() => dispatch(toggleSuppliesModal(!show))}

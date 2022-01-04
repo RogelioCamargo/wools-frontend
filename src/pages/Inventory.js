@@ -28,7 +28,7 @@ const Inventory = () => {
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
   return (
-    <div className="w-75 mx-auto my-5">
+    <div className="w-75 mx-auto py-5">
       <PageHeader
         title="Inventory"
         onClick={() => dispatch(toggleProductModal())}
