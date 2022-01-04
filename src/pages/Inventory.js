@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {useNavigate } from 'react-router-dom'
 
 // action creators
 import { initializeProducts } from "../reducers/productReducer";
@@ -16,12 +15,10 @@ import { Form } from "react-bootstrap";
 const Inventory = () => {
   const [filter, setFilter] = useState("");
   const dispatch = useDispatch();
-	const navigate = useNavigate();
 
   useEffect(() => {
-		navigate("/inventory");
     dispatch(initializeProducts());
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   const products = useSelector(state => state.products);
   const show = useSelector(state => state.modals.productModal);

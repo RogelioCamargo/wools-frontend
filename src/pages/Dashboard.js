@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {useNavigate } from 'react-router-dom'
 
 // action creators
 import { initializeMessages } from "../reducers/messageReducer";
@@ -14,12 +13,10 @@ import ModalForm from "../components/ModalForm";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-	const navigate = useNavigate();
 
   useEffect(() => {
-		navigate("/");
     dispatch(initializeMessages());
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   const show = useSelector(state => state.modals.messageModal);
   const messages = useSelector(state => state.messages);
