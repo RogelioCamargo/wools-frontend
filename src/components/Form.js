@@ -9,6 +9,7 @@ import {
   updateLevel,
   updateType,
   updateBrand,
+	updateQuantity,
 } from "../reducers/fieldsReducer";
 
 const MyForm = ({ isMessage }) => {
@@ -16,7 +17,7 @@ const MyForm = ({ isMessage }) => {
 	const fields = useSelector(state => state.fields);
 
 	return (
-    <Form>
+    <Form className="p-1">
       {isMessage ? (
         <Form.Group className="mb-2">
           <Form.Label>Content</Form.Label>
@@ -84,16 +85,27 @@ const MyForm = ({ isMessage }) => {
           </Form.Select>
         </Form.Group>
       ) : (
-        <Form.Group className="mb-4">
-          <Form.Label>Brand</Form.Label>
-          <Form.Control
-            type="text"
-            name="brand"
-            value={fields.brand}
-            onChange={({ target }) => dispatch(updateBrand(target.value))}
-            placeholder="i.e Olipop"
-          />
-        </Form.Group>
+				<>
+					<Form.Group className="mb-2">
+						<Form.Label>Brand</Form.Label>
+						<Form.Control
+							type="text"
+							name="brand"
+							value={fields.brand}
+							onChange={({ target }) => dispatch(updateBrand(target.value))}
+							placeholder="i.e Olipop"
+						/>
+					</Form.Group>
+					<Form.Group className="mb-4">
+						<Form.Label>Quantity</Form.Label>
+						<Form.Control
+							type="number"
+							name="quantity"
+							value={fields.quantity}
+							onChange={({ target }) => dispatch(updateQuantity(target.value))}
+						/>
+					</Form.Group>
+				</>
       )}
     </Form>
   );

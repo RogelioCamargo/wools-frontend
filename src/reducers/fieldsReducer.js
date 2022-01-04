@@ -4,6 +4,7 @@ const initalState = {
   content: "",
   level: "0",
   type: "announcement",
+	quantity: "",
   brand: "",
 };
 
@@ -21,6 +22,8 @@ const fieldsReducer = (state = initalState, action) => {
       return { ...state, content: action.payload };
     case "UPDATE_TYPE":
       return { ...state, type: action.payload };
+		case "UPDATE_QUANTITY":
+      return { ...state, quantity: action.payload };
     case "RESET":
       return initalState;
     default:
@@ -67,6 +70,13 @@ export const updateBrand = (brand) => {
   return {
     type: "UPDATE_BRAND",
     payload: brand,
+  };
+};
+
+export const updateQuantity = (quantity) => {
+  return {
+    type: "UPDATE_QUANTITY",
+    payload: quantity,
   };
 };
 
