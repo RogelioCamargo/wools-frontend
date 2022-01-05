@@ -21,12 +21,6 @@ const ModalForm = ({ title, show, handleClose, isMessage, isProduct }) => {
   }
 
   const handleSubmit = async () => {
-    const product = {
-      name: fields.name,
-      level: fields.level,
-      brand: fields.brand,
-    };
-
     if (isMessage) {
       const message = {
         content: fields.content,
@@ -36,14 +30,27 @@ const ModalForm = ({ title, show, handleClose, isMessage, isProduct }) => {
       if (!fields.id) dispatch(createOneMessage(message));
       else dispatch(updateOneMessage({ ...message, id: fields.id }));
     }
-    else if (isProduct) {
-      if (!fields.id) dispatch(createOneProduct(product));
-      else dispatch(updateOneProduct({ ...product, id: fields.id }));
-    }
     else {
-      if (!fields.id) dispatch(createOneItem(product));
-      else dispatch(updateOneItem({ ...product, id: fields.id }));
-    }
+			const product = !fields.quantity ? {
+				name: fields.name,
+				level: fields.level,
+				brand: fields.brand,
+			} : { 
+				name: fields.name,
+				level: fields.level,
+				brand: fields.brand,
+				quantity: Number(fields.quantity)
+			};
+
+			if (isProduct) {
+				if (!fields.id) dispatch(createOneProduct(product));
+				else dispatch(updateOneProduct({ ...product, id: fields.id }));
+			}
+			else {
+				if (!fields.id) dispatch(createOneItem(product));
+				else dispatch(updateOneItem({ ...product, id: fields.id }));
+			}
+		}
     
     handleClose();
     dispatch(reset());
