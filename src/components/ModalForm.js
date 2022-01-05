@@ -41,7 +41,6 @@ const ModalForm = ({ title, show, handleClose, isMessage, isProduct }) => {
 				brand: fields.brand,
 				quantity: Number(fields.quantity)
 			};
-
 			if (isProduct) {
 				if (!fields.id) dispatch(createOneProduct(product));
 				else dispatch(updateOneProduct({ ...product, id: fields.id }));

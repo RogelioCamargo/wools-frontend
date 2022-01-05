@@ -35,7 +35,7 @@ const Item = ({ item, isMessage, isProduct }) => {
         <Level />
         <div className="px-2">
           <p className="m-0">{item.content}</p>
-          <p className="m-0 text-muted h7">{item.date}</p>
+          <p className="m-0 text-muted h8">Updated: {item.date}</p>
         </div>
       </div>
       <ActionButton
@@ -63,10 +63,14 @@ const Item = ({ item, isMessage, isProduct }) => {
         <Level />
         <div className="px-2">
           <p className="m-0">{item.name}</p>
-          {item.brand && (
-            <p className="m-0 text-muted h7">{item.brand}</p>
-          )}
-          <p className="m-0 text-muted h7">{item.date}</p>
+          {item.brand && item["quantity"] ? (
+            <p className="m-0 text-muted h7">{item.brand} | Quantity: {item["quantity"]}</p>
+          ) : item.brand ? (
+						<p className="m-0 text-muted h7">{item.brand}</p>
+					) : (
+						<p className="m-0 text-muted h7">{item["quantity"]}</p>
+					)}
+          <p className="m-0 text-muted h8">Updated: {item.date}</p>
         </div>
       </div>
       <ActionButton
